@@ -1,0 +1,520 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Luke Stewart's CV},
+    pdfauthor={Luke Stewart},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+
+\usepackage[bibstyle=publist,style=authortitle-comp,backend=biber,doi=false,giveninits=true,maxcitenames=99,isbn=false,url=false]{biblatex}
+\addbibresource{10.1007_978-3-031-40132-9_17-citation.bib}
+\addbibresource{m20.bib}
+\addbibresource{citation-12413_195.bib}
+\addbibresource{citation-13355_137.bib}
+\addbibresource{citation-13355_170.bib}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+\AtEveryBibitem{\clearname{editor}}
+\AtEveryCitekey{\clearname{editor}}
+\AtEveryBibitem{\clearlist{location}}
+\AtEveryCitekey{\clearlist{location}}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Luke Stewart
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{8079 S Quince Cir., Centennial, CO}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:stwealc@gmail.com}{stewalc@gmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:256-683-1560}{256.683.1560}}%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        % \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{yourwebsite.com}}%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        % \mbox{\hrefWithoutArrow{https://linkedin.com/in/yourusername}{linkedin.com/in/yourusername}}%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        % \mbox{\hrefWithoutArrow{https://github.com/yourusername}{github.com/yourusername}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+
+    % \section{Welcome to RenderCV!}
+
+
+
+        
+    %     \begin{onecolentry}
+    %         \href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+    %     \end{onecolentry}
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{onecolentry}
+    %         The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
+    %     \end{onecolentry}
+
+
+    
+    \section{Summary of Qualifications}
+    \begin{twocolentry}{
+        }
+            \textbf{\large Intangibles}
+    \end{twocolentry}
+    \begin{onecolentry}
+        \begin{highlightsforbulletentries}
+            \item An energetic and self-motivated engineer with a record of successfully leading groups, organizing tasks and designing, implementing, deploying, and maintaining full-stack solutions ahead of schedule and under budget
+            \item Effective communicator across cultural, organizational, and engineering disciplines
+        \end{highlightsforbulletentries}
+    \end{onecolentry}
+
+    \vspace{0.20 cm}
+
+    \begin{twocolentry}{
+        }
+            \textbf{\large Technical Skills}
+    \end{twocolentry}
+    \begin{onecolentry}
+        \begin{highlightsforbulletentries}
+            \item Programming: 
+                                        \textbf{Python},
+                                        \textbf{C/\CC},
+                                        Java,
+                                        Bash, 
+                                        Go,
+                                        JavaScript (React, Angular, Svelte),
+                                        Awk,
+                                        Groovy,
+                                        \LaTeX{},
+                                        Markdown,
+                                        PyTorch, NLTK, MCP, LLM, Ollama
+            \item Applications: 
+                                        % AMPCS,
+                                        Ant, 
+                                        \textbf{AWS}, 
+                                        % Chef, 
+                                        % ClearCase, 
+                                        % ClearQuest, 
+                                        Claude,
+                                        CMake, 
+                                        % CVS, 
+                                        \textbf{Docker/Podman}, 
+                                        % DOORS, 
+                                        Eclipse, 
+                                        % Emacs, 
+                                        \textbf{FPrime},
+                                        \textbf{Git} (Hub, Lab, command line), 
+                                        Gradle, 
+                                        \textbf{GreenHills},
+                                        % Ivy, 
+                                        Jenkins,
+                                        \textbf{Linux/Unix} platforms, 
+                                        % Mathcad, 
+                                        % Mathematica, 
+                                        Matlab, 
+                                        NGINX,
+                                        % Microsoft Office, 
+                                        % NASA WorldWind, 
+                                        Octave, 
+                                        Purify,
+                                        % Rational Rhapsody, 
+                                        % Rational Rose, 
+                                        % Rational System Architect, 
+                                        \textbf{SQL} (many DB flavors),
+                                        Sun Grid Engine (SGE), 
+                                        Subversion, 
+                                        System ToolKit (STK), 
+                                        Terraform, 
+                                        Valgrind, 
+                                        Vim, 
+                                        VMWare, 
+                                        VSCode, 
+                                        \textbf{VxWorks}
+        \end{highlightsforbulletentries}
+    \end{onecolentry}
+
+    \vspace{0.20 cm}
+
+    \begin{twocolentry}{
+        }
+            \textbf{\large Security Clearance}
+    \end{twocolentry}
+    \begin{onecolentry}
+        \begin{highlightsforbulletentries}
+            \item Department of Defense \textbf{Secret}
+        \end{highlightsforbulletentries}
+    \end{onecolentry}
+
+    \vspace{0.30 cm}
+
+    \section{Education}
+
+
+
+        
+        \begin{twocolentry}{
+            \textit{\small May 2006}
+        }
+            \href{http://www.auburn.edu/}{\textbf{Auburn University}}, BS Electrical Engineering\end{twocolentry}
+
+        \vspace{0.20 cm}
+        % \begin{onecolentry}
+        %     \begin{highlights}
+        %         \item GPA: 3.9/4.0 (\href{https://example.com}{a link to somewhere})
+        %         \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+        %     \end{highlights}
+        % \end{onecolentry}
+
+
+
+    
+    \section{Experience}
+
+
+
+        
+        \begin{twocolentry}{
+            \textit{\small May 2019 - present}
+        }
+            \href{https://www.jpl.nasa.gov/}{\textbf{\large NASA Jet Propulsion Laboratory}} \textit{\small Software Systems Engineer III -- Pasadena, CA}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                % \item Currently working in Mission Control Information Systems (393C).
+                \item \textbf{Cognizant Engineer (CogE)} -- \textbf{Psyche} Deep Space Optical Communications (\textbf{DSOC}) \textbf{OpenMCT}. Personally designed real-time Ground Data System architecture synchronizing streaming telemetry from multiple antennas available at an AWS-deployed RESTFul endpoint (React).
+                %Locally deployed (Podman containers) at Ground Laser Transmit (GLT) and Ground Laser Receive (GLR) Antennas with real-time synchronized telemetry to AWS deployed (GovCloud; JPL Net) custom OpenMCT adaptation with RethinkDB (real-time) and InfluxDB (time series; historical) data management running with automated telemetry processing and replication. The AWS RESTFul endpoint provides necessary real-time Psyche pass telemetry observation for all mission stakeholders.
+                \item Multiple Uplink Per Antenna (\textbf{MUPA}) Space Link Extension (SLE) Forward CLTU (FCLTU) Service Multiplexer (FMUX). Python-based novel approach for multiplexing CLTUs allowing one DSN antenna to service multiple spacecrafts' uplink needs.  
+                \item Common Mission Control (CMC). Integrating \href{https://github.com/yamcs/yamcs}{\textbf{YAMCS}} mission control framework (Java) into JPL missions to establish a NASA-wide Common Mission Control Ground Data System (GDS), which requires a deep understanding of CCSDS packets, frames, and Space Link Extension (SLE) interfaces.
+                \item \textbf{Psyche Pass Automation}. Python program currently used by \textbf{Psyche}, \textbf{Europa Clipper}, and other Earth-orbiting missions to automatically initiate space antenna station connection and downlink processing using AMPCS driven by DSN (SPS) track scheduling.
+                %. Supports passes on the DSN in addition to the NEN and SN.
+
+                \item Actively supported Mars 2020 (\textbf{Perseverance Rover; Ingenuity Drone}) automated execution and analysis of Second Chance (SECC) flight software to ensure successful Martian Entry Descent and Landing (\textbf{EDL}). 
+                %This uses my framework for automated and distributed execution of FSW simulation across 50 servers to complete 450 individual test cases.
+
+                \item Created a self-contained automated Docker orchestration framework to launch and interact with AMPCS
+                (Ground Control Software), Vista (a NASA OpenMCT plugin for telemetry visualization), and cFS (Core Flight
+                System; an open-source flight software framework)/FPrime (a flight-proven, multi-platform, open-source flight software framework) to demonstrate Mission Control System's full suite of
+                functionality with a simple, user-facing emphasis.
+
+                \item Helped implement a Continuous Integration pipeline for Mars 2020 CS3 (Common Software and Services
+                Subsystem) to build Docker images and auto-deploy AWS (Amazon Web Services) GovCloud environments for
+                80+ subsystem component functionalities using Jenkins, Docker, and terraform.
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            \textit{\small June 2017 - April 2019}
+        }
+            \href{http://www.raytheon.com/}{\textbf{\large Raytheon Company}} \textit{\small Principal Software Engineer -- Pasadena, CA}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed, Executed, and Reviewed Functional Integration Tests (FIT) for \textbf{Mars 2020 Flight Software}.
+                \item Architected and implemented a Continuous Integration Automated Testing Solution for Mars 2020 (WART).
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            \textit{\small August 2010 - June 2017}
+        }
+            \href{http://www.raytheon.com/}{\textbf{\large Raytheon Company}} \textit{\small Systems Engineer -- Aurora, CO}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{GPS OCX} automation/integration specialist, Subject matter expert for JPL program code (RTGx Kalman Filter; Trajedy astrodynamics propagator).
+                \item GPS OCX System Simulator (\textbf{GSYS}) developer, integrator, and subject matter expert.
+                \item Worked with \textbf{Digital Defense Services} (DDS) to integrate DevOps mentality and practices into the GPS OCX Program.
+                \item Implemented Distributed Computing framework for analysis/execution using parallel processing (\CC\ [an IPC methodology]) and MapReduce (modular Distributed Computing) techniques.
+                \item Wrapped real-time Satellite Flight Software (\CC\ and ADA compiled with GreenHills and GNAT Pro/AdaCore, respectively) to interact within the GSYS Simulation Framework.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.3 cm}
+
+        \begin{twocolentry}{
+            \textit{\small July 2008 - August 2010}
+        }
+            \href{http://www.raytheon.com/}{\textbf{\large Raytheon Company}} \textit{\small Systems Engineer -- Woburn, MA}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Support Analyst at \textbf{MDIOC} in Colorado Springs as AN/TPY-2 radar simulation (\textbf{CRUSHM}) support analyst for the TA-10 event.
+                \item Worked on classified defense contract tasks for simulation, modeling, and analysis of Forward Based X-Band - Transportable (FBX-T) and AN/TPY-2 Radar systems.
+                \item Prepared, compiled, and installed various releases of CRUSHM on-site at customer locations.
+            \end{highlights}
+        \end{onecolentry}
+
+
+    \vspace{0.20 cm}
+    
+    \section{Publications}
+       
+        \begin{samepage}
+            \begin{twocolentry}{
+                \textit{\small 2025}
+            }
+                \textbf{Operational Results from the Deep Space Optical Communications Project Ground Laser Transmitter}
+            \end{twocolentry}
+
+            \vspace{0.10 cm}
+            
+            \begin{onecolentry}
+                \mbox{Meenehan}, \mbox{Velasco}, \mbox{Srinivasan}
+
+                \vspace{0.10 cm}
+
+                \href{https://doi.org/10.1117/12.3041400}{10.1117/12.3041400}
+            \end{onecolentry}
+        \end{samepage}
+
+        \vspace{0.20 cm}
+        \begin{samepage}
+            \begin{twocolentry}{
+                \textit{\small 2023}
+            }
+                \textbf{Space Telemetry Analysis with PyContract}
+            \end{twocolentry}
+
+            \vspace{0.10 cm}
+            
+            \begin{onecolentry}
+                \mbox{Duckett}, \mbox{Havelund}, \mbox{Stewart}
+
+                \vspace{0.10 cm}
+                
+                \href{https://doi.org/10.1007/978-3-031-40132-9_17}{10.1007/978-3-031-40132-9\_17}
+            \end{onecolentry}
+        \end{samepage}
+
+    \vspace{0.30 cm}
+    
+    \section{Special Activities and Awards}
+
+        
+        \begin{twocolentry}{
+        }
+            \textbf{NASA JPL Awards}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item 2025 NASA \textbf{Group Achievement Award} -- MGSS Collaborative Mission Control Evaluation and Testing Team
+                \item 2023 NASA \textbf{Voyager Individual Achievement Award} -- Psyche DSOC Ground Data System Design, Development, Testing, and Deployment 
+                \item 2023 NASA \textbf{Group Achievement Award} -- Exceptional System Engineering, Planning, Coordination, Software Development, and Testing of AMPCS Python 3 Migration
+                \item 2021 NASA \textbf{Group Achievement Award} -- Outstanding Contributions to the Successful Development, Test, and Delivery of the Psyche Flight Software
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Personal}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \href{http://www.auburn.edu/honors/college/}{Auburn University \textbf{Honors College}, 2006}
+                \item \href{http://www.eng.auburn.edu/organizations/HKN/}{\textbf{Eta Kappa Nu} -- Xi Chapter, 2005}
+                \item \href{http://www.eng.auburn.edu/organizations/SOA/}{Auburn University \textbf{Solar Car Team}, 2004}
+                \item \href{https://www.scouting.org/about/research/eagle-scouts/}{Boy Scouts of America \textbf{Eagle Scout}, 1999}
+            \end{highlights}
+        \end{onecolentry}
+
+    % \section{Technologies}
+
+
+
+        
+    %     \begin{onecolentry}
+    %         \textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
+    %     \end{onecolentry}
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{onecolentry}
+    %         \textbf{Technologies:} .NET, Microsoft SQL Server, XCode, Interface Builder
+    %     \end{onecolentry}
+
+
+    
+
+\end{document}

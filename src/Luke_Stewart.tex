@@ -1,54 +1,36 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% NOTE: If you find that it says                                     %%
-%%                                                                    %%
-%%                           1 of ??                                  %%
-%%                                                                    %%
-%% at the bottom of your first page, this means that the AUX file     %%
-%% was not available when you ran LaTeX on this source. Simply RERUN  %%
-%% LaTeX to get the ``??'' replaced with the number of the last page  %%
-%% of the document. The AUX file will be generated on the first run   %%
-%% of LaTeX and used on the second run to fill in all of the          %%
-%% references.                                                        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Don't like 10pt? Try 11pt or 12pt
 \documentclass[8pt]{article}
 
 % This is a helpful package that puts math inside length specifications
 \usepackage{calc}
+% \usepackage{biblatex}
+\usepackage[bibstyle=publist,style=authortitle-comp,backend=biber,doi=false,giveninits=true,maxcitenames=99,isbn=false,url=false]{biblatex}
+\addbibresource{10.1007_978-3-031-40132-9_17-citation.bib}
+\addbibresource{m20.bib}
+\addbibresource{citation-12413_195.bib}
+\addbibresource{citation-13355_137.bib}
+\addbibresource{citation-13355_170.bib}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+\AtEveryBibitem{\clearname{editor}}
+\AtEveryCitekey{\clearname{editor}}
+\AtEveryBibitem{\clearlist{location}}
+\AtEveryCitekey{\clearlist{location}}
+% \plauthorname{Stewart}
+% \usepackage[
+%   backend      = biber,
+%   doi          = false,
+%   giveninits   = false,
+%   maxcitenames = 99,
+%   isbn         = false,
+%   url          = false,
+% ]{biblatex}
+% \usepackage{fontspec}
+% \usepackage{fontawesome}
 
 % Layout: Puts the section titles on left side of page
 \reversemarginpar
-
-%
-%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
-%
-% The next \usepackage line changes the layout for CV style section
-% headings as marginal notes. It also sets up the paper size as either
-% letter or A4. By default, letter was used. If A4 paper is desired,
-% comment out the letterpaper lines and uncomment the a4paper lines.
-%
-% As you can see, the margin widths and section title widths can be
-% easily adjusted.
-%
-% ALSO: Notice that the includefoot option can be commented OUT in order
-% to put the PAGE NUMBER *IN* the bottom margin. This will make the
-% effective text area larger.
-%
-% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
-% see the note about the +LP and -LP lines below. Comment out the +LP
-% and uncomment the -LP.
-%
-% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
-% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
-% below.
-%
 
 %% Use these lines for letter-sized paper
 \usepackage[paper=letterpaper,
@@ -166,9 +148,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\makeheading{Luke C.~Stewart}
+        \makeheading{Luke C.~Stewart}
 
-\section{\textbf{Contact Information}}
+        \section{\textbf{Contact Information}}
 %
 % NOTE: Mind where the & separators and \\ breaks are in the following
 %       table.
@@ -176,458 +158,294 @@
 % ALSO: \rcollength is the width of the right column of the table
 %       (adjust it to your liking; default is 1.85in).
 %
-\newlength{\rcollength}\setlength{\rcollength}{1.85in}%
-%
-
-%   \begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-%   % \href{http://www.ece.osu.edu/}%
-%   %      {Department of Electrical and Computer Engineering} & \\
-%   % \href{http://www.osu.edu/}{The Ohio State University}
-%   271 Dartmouth St., Apt 3J      & \textit{Home\,\,:} (256) 880-5879 \\
-%   Boston, MA 02116               & \textit{Cell\,\,\,\,\,\,\,:} (256) 683-1560 \\
-%                                 & \textit{E-mail:}
-%   \href{mailto:stewalc@gmail.com}{stewalc@gmail.com}\\
-%   \end{tabular}
-
-\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-% \href{http://www.ece.osu.edu/}%
-%      {Department of Electrical and Computer Engineering} & \\
-% \href{http://www.osu.edu/}{The Ohio State University}
-\href{http://maps.google.com/maps?rls=en&q=1950+logan+st+denver+co}{1950 Logan St., Apt. 904}      & \textit{Cell\,\,\,\,\,\,\,:} (256) 683-1560 \\
-\href{http://maps.google.com/maps?rls=en&q=1950+logan+st+denver+co}{Denver, CO 80203}               & \textit{E-mail:}
-\href{mailto:stewalc@gmail.com}{stewalc@gmail.com}\\
-\end{tabular}
-%http://maps.google.com/maps?rls=en&q=1950+logan+st+denver+co
+                \newlength{\rcollength}\setlength{\rcollength}{1.85in}%
+                \begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+                        \href{https://www.google.com/maps/place/8079+Quince+Cir,+Centennial,+CO+80112}{8079 Quince Cir.}          & \textit{Cell\,\,\,\,\,\,\,:} (256) 683-1560 \\
+                        \href{https://www.google.com/maps/place/8079+Quince+Cir,+Centennial,+CO+80112}{Centennial, CO 80112}      & \textit{E-mail:} \href{mailto:stewalc@gmail.com}{stewalc@gmail.com}\\
+                \end{tabular}
 
 
-\section{\textbf{Security Clearance}}
-%
-Department of Defense \textbf{Active Secret}\\\\
-\blankline
-% \section{Citizenship}
-% % 46157 - lawrence bennett sats
-% USA\\
+        \section{\textbf{Security Clearance}}
+                Department of Defense \textbf{Secret}
+                \blankline
+                \blankline
+                \blankline
 
-% \section{Research Interests}
-% %
-% Control Systems, Communication Systems,  engineering education
+        \section{\textbf{Education}}
+                \href{http://www.auburn.edu/}{\textbf{Auburn University}} -- Auburn, Alabama USA\\
+                \blankline
+                B.S., Electrical Engineering, May 2006.
+                % \begin{outerlist}
+                        % \item B.S., Electrical Engineering, May 2006.
+                        
+                % \item
+                % G.P.A. $3.8\,/\,4.0$
+                %         \href{http://www.eng.auburn.edu/}
+                %              {Electrical Engineering}, May 2006\\
 
-\section{\textbf{Education}}
-%
-\href{http://www.auburn.edu/}{\textbf{Auburn University}},
-Auburn, Alabama USA
-\begin{outerlist}
-% \begin{itemize}
-%\item[]
-\item B.S., Electrical Engineering, May 2006.
-% \item
-% G.P.A. $3.8\,/\,4.0$
-%         \href{http://www.eng.auburn.edu/}
-%              {Electrical Engineering}, May 2006\\
+                %         \begin{innerlist}
+                %         \item Electrical specialization (emphasis on electromagnetics and control systems)
+                %         \end{innerlist}
 
-%         \begin{innerlist}
-%         \item Electrical specialization (emphasis on electromagnetics and control systems)
-%         \end{innerlist}
+                % \end{outerlist}
 
-\end{outerlist}
-% \end{itemize}
-\blankline
+        % \section{\textbf{Objective}}
+        %         {\small Software/Systems Engineering position with hardware and software integration/simulation
+        %         activities in a dynamic company offering  multiple technical and leadership growth opportunities
+        %         }
 
-% \newline
-\section{\textbf{Objective}}
-{\small Electrical Engineering position with hardware and software integration/simulation
-activities in a dynamic company offering  multiple technical and leadership growth opportunities
-}
-\blankline
-\section{\textbf{Summary of Qualifications}}
-\begin{outerlist}
-% \begin{itemize}
-{\small
-\item[] %Intangibles
-\begin{innerlist}
-% \begin{itemize}
-\item An energetic and self-motivated engineer with a record of successfully leading groups,
-      organizing tasks and designing systems ahead of schedule and under budget
+        \section{\textbf{Summary of Qualifications}}
+                \begin{outerlist}
+                {
+                        \small
+                        \item[] \textbf{Intangibles}
+                        \begin{innerlist}
+                                \item An energetic and self-motivated engineer with a record of successfully leading groups,
+                                organizing tasks and designing, implementing, deploying, and maintaining full-stack solutions ahead of schedule and under budget
+                                \item Effective communicator across cultural, organizational, and engineering disciplines
+                                % \item Experienced at prioritizing and multitasking to complete large projects
+                                % \item Team player with strong work ethic; organized \& goal oriented
+                        \end{innerlist}
 
-\item Effective communicator across cultural, organizational, and engineering disciplinary lines
+                        \blankline
+                        \item[] \textbf{Technical Skills}
+                        %
+                        \begin{innerlist}
+                                \item Programming: 
+                                        Python,
+                                        C/\CC,
+                                        Java,
+                                        Bash, 
+                                        Go,
+                                        JavaScript (React, Angular, Svelte),
+                                        Awk,
+                                        Groovy,
+                                        \LaTeX{},
+                                        Markdown,
+                                        PyTorch, NLTK, MCP, LLM, Ollama
 
-\item Experienced at prioritizing and multitasking to complete large projects
+                                % \item Programming: 
+                                %         Awk,
+                                        % Basic,
+                                        % Bash, 
+                                        % C/\CC,
+                                        % Go,
+                                        % Groovy,
+                                        % Html,
+                                        % Java,
+                                        % JavaScript,
+                                        % \LaTeX{},
+                                        % Markdown,
+                                        % Perl,
+                                        % Python
+                                        % Sed,
+                                        % Tcl/Tk,
+                                        % Xml
 
-\item Team player with strong work ethic; organized \& goal oriented
-\end{innerlist}
-% \end{itemize}
+                                % \blankline 
+                                \item Applications: 
+                                        AMPCS,
+                                        Ant, 
+                                        AWS, 
+                                        % Chef, 
+                                        % ClearCase, 
+                                        % ClearQuest, 
+                                        Claude,
+                                        CMake, 
+                                        % CVS, 
+                                        Docker/Podman, 
+                                        % DOORS, 
+                                        Eclipse, 
+                                        % Emacs, 
+                                        FPrime,
+                                        Git (Hub, Lab, command line), 
+                                        Gradle, 
+                                        GreenHills,
+                                        Ivy, 
+                                        Jenkins,
+                                        Linux/Unix platforms, 
+                                        % Mathcad, 
+                                        % Mathematica, 
+                                        Matlab, 
+                                        NGINX,
+                                        % Microsoft Office, 
+                                        % NASA WorldWind, 
+                                        Octave, 
+                                        Purify,
+                                        % Rational Rhapsody, 
+                                        % Rational Rose, 
+                                        % Rational System Architect, 
+                                        SQL (many DB flavors),
+                                        Sun Grid Engine (SGE), 
+                                        Subversion, 
+                                        System ToolKit (STK), 
+                                        Terraform, 
+                                        Valgrind, 
+                                        Vim, 
+                                        VMWare, 
+                                        VSCode, 
+                                        VxWorks
+                        \end{innerlist}
+                }
+                \end{outerlist}
 
+                % \blankline
 
-%\item[] %Technical Skills
-%
-\begin{innerlist}
-% \begin{itemize}
-\item Hardware: Network Analyzer, Oscilloscope, Signal Generator, Spectrum Analyzer, %, Controller Area Network (CAN)
+        \section{\textbf{Professional Experience}}
+                %
+                \href{https://www.jpl.nasa.gov/}{\textbf{NASA Jet Propulsion Laboratory}} -- Pasadena, California USA
+                        \begin{outerlist}
+                        \item[] \textit{Software Systems Engineer III}%
+                                \hfill \textbf{May 2019 to present}
+                        \begin{innerlist}
+                                \item Currently working in Mission Control Information Systems (393C).
+                                \item Cognizant Engineer (CogE) -- \href{https://dsocmct.jpl.nasa.gov/}{Psyche Deep Space Optical Communications (DSOC) OpenMCT}. Locally deployed (Podman containers) at Ground Laser Transmit (GLT) and Ground Laser Receive (GLR) Antennas with real-time synchronized telemetry to AWS deployed (GovCloud; JPL Net) custom OpenMCT adaptation with RethinkDB (real-time) and InfluxDB (time series; historical) data management running with automated telemetry processing and replication. The AWS RESTFul endpoint provides necessary real-time Psyche pass telemetry observation for all mission stakeholders.
+                                \item \href{https://github.jpl.nasa.gov/MUPA/fmux}{Multiple Uplink Per Antenna (MUPA) Space Link Extension (SLE) Forward CLTU (FCLTU) Service Multiplexer (FMUX)}. Python-based novel approach for multiplexing CLTUs allowing one DSN antenna to service multiple spacecrafts' uplink needs.  
+                                \item Common Mission Control (CMC). Integrating \href{https://github.com/yamcs/yamcs}{YAMCS} mission control framework (Java) into JPL missions to establish a NASA-wide Common Mission Control Ground Data System (GDS), which requires a deep understanding of CCSDS packets, frames, and Space Link Extension (SLE) interfaces
+                                \item \href{https://github.jpl.nasa.gov/stewartl/Pass_Automation}{Psyche Pass Automation}. Python program currently used by Psyche, Europa Clipper, and other Earth-orbiting missions to automatically initiate space antenna station connection and downlink processing using AMPCS driven by DSN (SPS) track scheduling. Supports passes on the DSN in addition to the NEN and SN.
 
-% \blankline
+                                \item Actively supported Mars 2020 (Perseverance Rover; Ingenuity Drone) automated execution and analysis of Second Chance (SECC) FSW to ensure
+                                successful Martian Entry Descent and Landing (EDL). This uses my framework for automated and distributed execution of FSW simulation
+                                across 50 servers to complete 450 individual test cases.
 
-\item Programming: Assembly,
-					Awk,
-					Basic,
-					Bash,
-					\CC,
-					Html,
-	     			Java,
-					\LaTeX{},
-					Perl,
-					Python,
-					Sed,
-					Tcl/Tk,
-					Xml
+                                \item Created a self-contained automated Docker orchestration framework to launch and interact with AMPCS
+                                (Ground Control Software), Vista (a NASA OpenMCT plugin for telemetry visualization), and cFS (Core Flight
+                                System; an open-source flight software framework)/FPrime (a flight-proven, multi-platform, open-source flight software framework) to demonstrate Mission Control System's full suite of
+                                functionality with a simple, user-facing emphasis.
 
-% \blankline
+                                \item Helped implement a Continuous Integration pipeline for Mars 2020 CS3 (Common Software and Services
+                                Subsystem) to build Docker images and auto-deploy AWS (Amazon Web Services) GovCloud environments for
+                                80+ subsystem component functionalities using Jenkins, Docker, and terraform.\\
 
-\item Applications: CVS,
-					DOORS,
-					Eclipse,
-					Emacs,
-					iTracker,
-					KDE,
-					Linux/Unix platforms,
-					Mathcad,
-					Mathematica,
-					Matlab,
-					Microsoft Office,
-					mySQL,
-					Octave,
-					ORCAD (PSpice),
-					OS X,
-					Purify,
-					Rational Rhapsody,
-					Rational Rose,
-					Solid Edge,
-					Sun Grid Engine,
-					SVN,
-					Valgrind,
-					Vim,
-					VMWare
+                        \end{innerlist}
+                \end{outerlist}
 
+                \href{http://www.raytheon.com/}{\textbf{Raytheon Company}} -- Pasadena, California USA
+                \begin{outerlist}
+                        \item[] \textit{Principal Software Engineer}%
+                                \hfill \textbf{June 2017 to April 2019}
+                        \begin{innerlist}
+                                \item Developed, Executed, and Reviewed Functional Integration Tests (FIT) for Mars 2020 Flight Software.
+                                % \item Implemented updates to existing Python Test Framework (PTF) to run the simulation in “split” mode (distributed across 2 servers; RHEL5 and RHEL7).
+                                % \item (Also fixed the need for a“split” solution while implementing it – provided an all-RHEL7 runtime solution)
+                                % \item Concurrently adapted the “split” and “RHEL7-unified” solutions for NISAR, SMAP, Psyche, and Europa Clipper Missions (for some Multi-Mission design/architecture experience)
+                                \item Architected and implemented a Continuous Integration Automated Testing Solution for Mars 2020 (WART).\\
+                        \end{innerlist}
+                \end{outerlist}
 
+                \href{http://www.raytheon.com/}{\textbf{Raytheon Company}} -- Aurora, Colorado USA
+                \begin{outerlist}
+                        \item[] \textit{Systems Engineer}%
+                                \hfill \textbf{August 2010 to June 2017}
+                        \begin{innerlist}
+                                \item GPS OCX automation/integration specialist, Subject matter expert for JPL program code (RTGx Kalman Filter; Trajedy astrodynamics propagator).
+                                \item GPS OCX System Simulator (GSYS) developer, integrator, and subject matter expert.
+                                \item Worked with Digital Defense Services (DDS) to integrate DevOps mentality and practices into the GPS OCX Program.
+                                % \item Successfully extended python with the JPL \CC\ libraries (developed necessary \CC\ API wrappers).
+                                \item Implemented Distributed Computing framework for analysis/execution using parallel processing (\CC\ [an IPC methodology]) and MapReduce (modular Distributed Computing) techniques. 
+                                % Software Engineer -- August 2010 to September 2015
+                                % \item Developer for GSYS. Streamlined Build/Package/Deploy Process for GSYS.
+                                \item Wrapped real-time Satellite Flight Software (\CC\ and ADA compiled with GreenHills and GNAT Pro/AdaCore, respectively) to interact within the GSYS Simulation Framework.
+                                % \item Integrator for GSYS and GPS OCX Operational Baseline (MCS). Played critical role in driving the OCX operational software with GSYS.
+                                % \item Developed and implemented the Space Vehicle Dynamics Model (SVDM). An API to the JPL GPS OCX astrodynamics algorithms (\CC) used by all simulated Space Vehicle Types in GSYS.
+                                % \item Developed and implemented the United States Naval Observatory (USNO) External Interface model to generate and consume NGA GPS products.
+                                % \item Developed many utilities on personal time to solve Program Risks (e.g., Automated SW Inventory, DiffSLOC, MP)\\
+                        \end{innerlist}
+                \end{outerlist}
 
-% \blankline
+                \href{http://www.raytheon.com/}{\textbf{Raytheon Company}} -- Woburn, Massachusetts USA
+                \begin{outerlist}
+                        \item[] \textit{Systems Engineer}%
+                                \hfill \textbf{July 2008 to August 2010}
+                        \begin{innerlist}
+                                \item Support Analyst at MDIOC in Colorado Springs as AN/TPY-2 radar simulation (CRUSHM) support analyst for the TA-10 event.
+                                \item Worked on classified defense contract tasks for simulation, modeling, and analysis of Forward Based X-Band - Transportable (FBX-T) and AN/TPY-2 Radar systems.
+                                % \item Worked on development and maintenance of CRUSHM radar simulation (\CC).
+                                \item Prepared, compiled, and installed various releases of CRUSHM on-site at customer locations.
+                                % \item Designed, ahead of schedule and underbudget, a Software Design Document (SDD) by creating an automated documentation generation tool.
+                                % \item Helped administer and operate a distributed Linux computing cluster built to expedite CRUSHM radar simulation, Monte Carlo analyses, and genetic algorithm studies.
+                                % \item Gained valuable insight into the procedural approach to designing/engineering a large scale \CC simulation product -- using UML methodologies -- on a timeline for a government customer.
+                                % \item Represented my company successfully in engineering design, integration, and support activities conducted in the government customer's classified labs on Redstone Arsenal, AL, and MDIOC Schriever AFB, Colorado Springs, CO.
+                                % \item Interacted professionally with government customers while hosting simulation training classes.\\
+                        \end{innerlist}
+                \end{outerlist}
 
-% \item Operating Systems: Microsoft Windows, Apple OS X, Linux, IRIX, and other UNIX variants
-\end{innerlist}
-% \end{itemize}
-}
-\end{outerlist}
-% \end{itemize}
+                % \newpage
+                % \href{http://www.dese.com/}{\textbf{DESE Research, Inc.}} -- Huntsville, Alabama USA
+                % \begin{outerlist}
+                % \item[] \textit{Electrical Engineer}%
+                %         \hfill \textbf{June 2006 to July 2008}
+                % \begin{innerlist}
+                % \item Worked on classified defense contract tasks for simulation, modeling, and analysis of missile systems in a 6 Degrees of Freedom (6DOF) environment as well as TOW Missile Hardware In the Loop (HWIL) simulations lab to develop wireless ``sensor to shooter" linkages.
+                % \item Gained extremely useful software knowledge and ability to include Python scripting/automation and \CC model development.
+                % \item Designed, ahead of schedule and under-budget, a Control Actuation System open-loop simulation and analysis toolkit.
+                % \item Helped design, construct, implement, and operate a distributed computing cluster built solely from excessed PCs and open source software.
+                % \end{innerlist}
+                % \end{outerlist}
 
+                % \href{http://www.phaseiv.com/}{\textbf{Phase IV Systems}} -- Huntsville, Alabama USA
+                % \begin{outerlist}
+                % \item[] \textit{Summer Hire}%
+                %         \hfill \textbf{Summer 2005}
+                % \begin{innerlist}
+                % \item Supported Army Radar Operations Facility with hands-on operational testing of fielded
+                %       Army radars (Sentinel Enhanced Target Range and Classification (ETRAC), Full Rate Production
+                %       Option 5 (FRP5)) and HWIL simulation with injected threat profiles.
 
-\blankline
+                % \item Collected Radar Cross Section (RCS) measurements of various threats for Stryker, HMMWV,
+                %       and Helicopter mounted Active Protection Systems (APS).
+                % \end{innerlist}
 
-% \href{http://www.osu.edu}{The Ohio State University}
-% \begin{innerlist}
-% \item \href{http://www.gradsch.osu.edu/Content.aspx?Content=44&itemid=2}
-%            {Dean's Distinguished University Fellowship}, 2004
-% \item Electrical and Computer Engineering Bradshaw Scholarship,
-%         2002--2004
-% \item Electrical and Computer Engineering Shafstall Scholarship,
-%         2001--2003
-% \item University Scholarship, 1999--2003
-% \end{innerlist}
+                % \item[] \textit{Co-op Student}%
+                %         \hfill \textbf{Summer 2003; Spring, Fall 2004}
+                % \begin{innerlist}
+                % \item Supported field-testing and radar development for Stryker mounted APS.
+                % \end{innerlist}
+                % \end{outerlist}
 
-% \section{Academic Experience}
-% \href{http://www.osu.edu}{\textbf{The Ohio State University}},
-% Columbus, Ohio USA
-% \begin{outerlist}
-% \item[] \textit{Graduate Student}%
-%         \hfill \textbf{June 2004 to present}
-% \begin{innerlist}
-% \item \href{http://www.gradsch.osu.edu/Content.aspx?Content=44&itemid=2}
-%            {Dean's Distinguished University Fellow}
-%       (June 2004 to present)
-%         \begin{innerlist}
-%         \item[] Includes current M.S.~research and course work.
-%         \end{innerlist}
-% \item \href{http://www.nsfgk12.org/}
-%            {National Science Foundation GK-12 Fellow}
-%       (September 2006 to October 2007)
-%         \begin{innerlist}
-%         \item[] Developed, implemented, and evaluated daily fourth grade
-%                 science lessons for a local inner-city public school
-%                 class.
-%         \end{innerlist}
-% \end{innerlist}
+                % \blankline
+        \section{\textbf{Publications}}
+                % \addbibresource{myreferences.bib}
+                
 
-% \item[] \textit{Instructor}%
-%         \hfill \textbf{March 2002 to June 2004}
-% \begin{innerlist}
-% \item Member of \href{http://feh.eng.ohio-state.edu/}
-%                      {Fundamentals of Engineering for Honors}
-%       instructional team.
-% \item Special graduate teaching appointment as undergraduate.
-% \item Lectured weekly laboratory on engineering fundamentals (ENG H191,
-%         H192, and H193).
-% \item Trained in-class undergraduate teaching assistants in laboratory
-%         procedure.
-% \item Graded weekly lab reports and provided laboratory exams.
-% \end{innerlist}
+                \nocite{*}
+                \begin{innerlist}
+                        \item \fullcite{10.1117/12.3043323}
+                        \item \fullcite{10.1117/12.3041400}
+                        \item \fullcite{Duckett2023}
+                        \item \fullcite{10.1117/12.2649577}
+                        \item \fullcite{9843596}
+                \end{innerlist}
+                
+                
 
-% \item[] \textit{Teaching Assistant}%
-%         \hfill \textbf{September 2000 to March 2002}
-% \begin{innerlist}
-% \item Assisted \href{http://feh.eng.ohio-state.edu/}
-%                     {Fundamentals of Engineering for Honors}
-%       instructional team.
-% \item Provided in-class support to first-year engineering students (ENG
-%         H191, H192, and H193).
-% \item Graded daily assignments on programming and drafting.
-% \end{innerlist}
+                % \printbibliography[title=\textbf{Publications}]
+                
+        \section{\textbf{Special Activities and Awards} }
+        %
+                \begin{outerlist}
+                        \item[] \textit{NASA Awards}%
+                        \begin{innerlist}
+                                \item \textbf{2025 NASA Group Achievement Award} -- MGSS Collaborative Mission Control Evaluation and Testing Team
+                                \item \textbf{2023 NASA Voyager Individual Achievement Award} -- Psyche DSOC Ground Data System Design, Development, Testing, and Deployment 
+                                \item \textbf{2023 NASA Group Achievement Award} -- Exceptional System Engineering, Planning, Coordination, Software Development, and Testing of AMPCS Python 3 Migration
+                                \item \textbf{2021 NASA Group Achievement Award} -- Outstanding Contributions to the Successful Development, Test, and Delivery of the Psyche Flight Software
+                        \end{innerlist}
+                        \item[] \textit{{Personal}}%
+                        \begin{innerlist}
+                                \item \href{http://www.auburn.edu/honors/college/}{Auburn University Honors College, 2006}
+                                \item \href{http://www.eng.auburn.edu/organizations/HKN/}{Eta Kappa Nu -- Xi Chapter, 2005}
+                                \item \href{http://www.eng.auburn.edu/organizations/SOA/}{Auburn University Solar Car Team, 2004}
+                                \item \href{https://www.scouting.org/about/research/eagle-scouts/}{Boy Scouts of America Eagle Scout, 1999}\\\\
+                        \end{innerlist}
+                \end{outerlist}
 
-% \item[] \textit{Undergraduate Researcher}%
-%         \hfill \textbf{September 2000 to March 2002}
-% \begin{innerlist}
-% \item Participated in the
-%         \href{http://www.cse.ohio-state.edu/europa/}{Europa
-%         Undergraduate Research Forum}, a part of the
-%         \href{http://www.cse.ohio-state.edu/rsrg/}{Reusable Software
-%         Research Group}.
-% \item Worked to improve undergraduate education of component based
-%         software engineering topics.
-% \item Researched needed changes to RESOLVE/C++ implementation for
-%         ANSI/C++ compliance.
-% \end{innerlist}
+                % \blankline
+                % % \href{https://github.jpl.nasa.gov/stewartl}{github.jpl.nasa.gov / stewartl}
+                % % \blankline
+                % \href{https://github.com/stewalc}{github.com / stewalc}
+                % \\(apologies, most of my efforts live in JPL enterprise github)
 
-% \item[] \textit{Grader}%
-%         \hfill \textbf{September 2001 to December 2001}
-% \begin{innerlist}
-% \item Graded daily electromagnetics assignments (ECE 311).
-% \end{innerlist}
-
-% \item[] \textit{Undergraduate Student}%
-%         \hfill \textbf{September 1999 to June 2004}
-% \end{outerlist}
-
-% \section{Publications}
-% %
-% Pavlic, T.P., and K.M.~Passino. Submitted. Foraging Theory for Mobile
-% Agent Speed Choice. \href{http://www.elsevier.com/locate/engappai}
-%                          {Engineering Applications of Artificial
-%                          Intelligence}.
-
-% \section{Books in Preparation}
-% %
-% Pavlic, T.P., B.W.~Andrews, K.M.~Passino, and T.A.~Waite. Foraging
-% Theory for Engineering.
-
-% \section{Conference Publications}
-% %
-% Freuler, R.J., M.J.~Hoffmann, T.P.~Pavlic, J.M.~Beams, J.P.~Radigan,
-% P.K.~Dutta, J.T.~Demel, and E.D.~Justen. 2003. Experiences with a
-% Comprehensive Freshman Hands-On Course -- Designing, Building, and
-% Testing Small Autonomous Robots. Proceedings of the 2003
-% \href{http://www.asee.org/}{American Society for Engineering Education}
-% Annual Conference \& Exposition.
-%\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
-
-
-\section{\textbf{Professional Experience}}
-%
-
-\href{http://www.raytheon.com/}{\textbf{Raytheon Company}},
-Woburn, Massachusetts USA
-\begin{outerlist}
-% \begin{itemize}
-
-\item[] \textit{Systems Engineer}%
-        \hfill \textbf{July 2008 to present}
-\begin{innerlist}
-% \begin{itemize}
-\item Currently working at MDIOC in Colorado Springs as AN/TPY-2 radar simulation (CRUSHM) support analyst for the TA-10 event.
-\item Worked on classified defense contract tasks for simulation, modeling,
-      and analysis of Forward Based X-Band - Transportable (FBX-T) and AN/TPY-2 Radar systems.
-\item Worked on development and maintenance of CRUSHM radar simulation (\CC).
-\item Prepared, compiled, and installed various releases of CRUSHM on-site at customer locations.
-\item Designed, ahead of schedule and underbudget, a Software Design Document (SDD) by creating an automated documentation generation tool.
-\item Helped administer and operate a distributed Linux computing cluster built to expedite CRUSHM radar simulation, Monte Carlo analyses, and genetic algorithm studies.
-\item Gained valuable insight into the procedural approach to designing/engineering a large scale \CC simulation product -- using UML methodologies -- on a timeline for a government customer.
-\item Represented my company successfully in engineering design, integration, and support activities conducted in the government customer's classified labs on Redstone Arsenal, AL, and MDIOC Schriever AFB, Colorado Springs, CO.
-\item Interacted professionally with government customers while hosting simulation training classes.\\
-\end{innerlist}
-\end{outerlist}
-% \end{itemize}
-% \end{itemize}
-\blankline
-\newpage
-\href{http://www.dese.com/}{\textbf{DESE Research, Inc.}},
-Huntsville, Alabama USA
-\begin{outerlist}
-% \begin{itemize}
-\item[] \textit{Electrical Engineer}%
-        \hfill \textbf{June 2006 to July 2008}
-\begin{innerlist}
-% \begin{itemize}
-\item Worked on classified defense contract tasks for simulation, modeling,
-      and analysis of missile systems in a 6 Degrees of Freedom (6DOF) environment
-      as well as TOW Missile Hardware In the Loop (HWIL) simulations lab to develop wireless ``sensor to shooter" linkages.
-\item Gained extremely useful software knowledge and ability to include Python scripting/automation and \CC model development.
-\item Designed, ahead of schedule and underbudget, a Control Actuation System open-loop simulation and analysis toolkit.
-\item Helped design, construct, implement, and operate a distributed computing cluster built solely from excessed PCs and open source software.
-%\item Gained valuable insight into the procedural approach to designing/engineering a product on a timeline for a government customer
-\item Represented my company successfully in engineering design activities conducted in the government customer's classified labs on Redstone Arsenal, AL.
-%\item Interacted professionally with government customers\\
-% \end{itemize}
-% \end{itemize}
-\end{innerlist}
-\end{outerlist}
-\blankline
-
-%
-\href{http://www.phaseiv.com/}{\textbf{Phase IV Systems}},
-Huntsville, Alabama USA
-\begin{outerlist}
-% \begin{itemize}
-\item[] \textit{Summer Hire}%
-        \hfill \textbf{Summer 2005}
-\begin{innerlist}
-% \begin{itemize}
-\item Supported Army Radar Operations Facility with hands-on operational testing of fielded
-      Army radars (Sentinel Enhanced Target Range and Classification (ETRAC), Full Rate Production
-      Option 5 (FRP5)) and HWIL simulation with injected threat profiles.
-
-\item Collected Radar Cross Section (RCS) measurements of various threats for Stryker, HMMWV,
-      and Helicopter mounted Active Protection Systems (APS).
-\end{innerlist}
-% \end{itemize}
-\item[] \textit{Co-op Student}%
-        \hfill \textbf{Summer 2003; Spring, Fall 2004}
-\begin{innerlist}
-% \begin{itemize}
-\item Supported field-testing and radar development for Stryker mounted APS.
-% \end{itemize}
-% \end{itemize}
-\end{innerlist}
-\end{outerlist}
-
-
-% \section{Special Activities and Awards}
-% %
-% \begin{innerlist}
-% \item \href{http://www.aufh.org}{FarmHouse Fraternity}
-% \item \href{http://www.auburn.edu/honors/college/}{Auburn university honors College}
-% \item \href{http://www.eng.auburn.edu/organizations/SOA/}{Auburn University Solar Car Team}
-% \item \href{http://www.auburn.edu/rugby/}{Auburn University Rugby Football Club}
-% \item \href{http://www.eng.auburn.edu/organizations/HKN/}{Eta Kappa Nu \emdash Xi Chapter}
-% \item Dean's List
-% \item BSA Eagle Scout
-% \item Roebuck Eagle Scout Scholarship
-% \item \href{http://www.hfhmc.org/}{Habitat for Humanity of Madison County}
-% \item Member of adult Soccer Team in \href{http://www.hasl.org/}{Community League}
-
-% % \href{http://www.nsf.gov/}{National Science Foundation}
-% % \begin{innerlist}
-% % \item \href{http://www.nsfgk12.org/}{GK-12 Fellowship}, 2006
-% % \item \href{http://www.nsf.gov/grfp}
-% %            {Graduate Research Fellowship} Honorable Mention, 2005
-% \end{innerlist}
-% \section{Service}
-% %
-% Director of Computers,
-% \href{http://ec.osu.edu/}{Engineers' Council},
-% \href{http://www.osu.edu/}{The Ohio State University}, 2002
-
-% \blankline
-
-% \href{http://www.osufirst.org/}{OSU FIRST Robotics Team},
-% \href{http://www.osu.edu}{The Ohio State University}, 2000--2004
-% \begin{innerlist}
-% \item Introduced middle school and high school students to science and
-%         technology by participating with them in national robotics
-%         competitions.
-% \item Led 2002 team to regional silver medal
-%         \href{http://www.firstwiki.org/Engineering_Inspiration_Award}
-%              {\emph{Engineering Inspiration Award}}.
-% \item \emph{Lead Team Mentor}, 2002--2004
-% \item \emph{Component Design Team Lead Mentor}, 2001--2002
-% \end{innerlist}
-
-% \blankline
-
-% \href{http://www.linuxvirtualserver.org/}
-%      {Linux Virtual Server Project}, 1999--2000
-% \begin{innerlist}
-% \item Early member of the team that formed the open source project that
-%         is now an important load balancing solution for the Linux
-%         software platform.
-% \end{innerlist}
-
-% \blankline
-
-% \href{http://www.gcfn.org/}
-%      {Greater Columbus Free-Net}, 1995--1997
-% \begin{innerlist}
-% \item Provided technical support services.
-% \end{innerlist}
-
-% \blankline
-
-% CompuTeen Bulletin Board System, 1993--1995
-% \begin{innerlist}
-% \item Administrated dial-up bulletin board system.
-% \item Founded and administrated TeenLiNK, an international electronic
-%         mail network that spread through the United States, Canada, and
-%         Australia and delivered mail over a series of electronic dial-up
-%         drop offs.
-% \end{innerlist}
-
-
-\blankline
-
-\section{\textbf{Special Activities and Awards} }
-%
-\begin{innerlist}
-  % \begin{itemize}
-\item \href{http://www.aufh.org}{FarmHouse Fraternity}
-\item \href{http://www.auburn.edu/honors/college/}{Auburn University Honors College}
-\item \href{http://www.eng.auburn.edu/organizations/SOA/}{Auburn University Solar Car Team}
-\item \href{http://www.auburn.edu/rugby/}{Auburn University Rugby Football Club}
-\item \href{http://www.ieee.org}{IEEE Member}
-\item \href{http://www.eng.auburn.edu/organizations/HKN/}{Eta Kappa Nu -- Xi Chapter}
-\item Dean's List
-\item BSA Eagle Scout
-\item Roebuck Eagle Scout Scholarship
-\item \href{http://www.hfhmc.org/}{Habitat for Humanity of Madison County}
-\item Member of adult soccer team in \href{http://www.bssc.com/}{community league}
-\item Avid \href{http://www.arduino.cc/}{Arduino} and iPhone programmer
-
-% \href{http://www.nsf.gov/}{National Science Foundation}
-% \begin{innerlist}
-% \item \href{http://www.nsfgk12.org/}{GK-12 Fellowship}, 2006
-% \item \href{http://www.nsf.gov/grfp}
-%            {Graduate Research Fellowship} Honorable Mention, 2005
-\end{innerlist}
-% \end{itemize}
-
-% \section{Mathematical Expertise}
-% %
-% Linear and Nonlinear Systems Theory
-
-% \blankline
-% \blankline
- \blankline
- \blankline
- \blankline
- \blankline
-% \end{outerlist}
-\textbf{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,References available upon request}
-
-% \blankline
-
-% Probability, Random Variables, and Stochastic Processes
-
-% \blankline
-
-% Dynamic Optimization
-
-% \blankline
-
-% Game Theory
 
 \end{document}
 
